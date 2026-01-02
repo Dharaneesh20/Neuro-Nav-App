@@ -40,22 +40,41 @@
 
 ## 🔑 Configuration (Optional)
 
-### Google Maps SDK (Native)
-By default, this project uses **Leaflet (Open Source)** used in `src/components/LeafletMap.js`.
-If you wish to switch back to **Google Maps Native SDK** for better performance on Android:
+### 🌍 Map Configuration: Leaflet vs. Google Maps
 
-1.  Get a [Google Maps API Key](https://console.cloud.google.com/).
-2.  Add it to `app.json`:
-    ```json
-    "android": {
-      "config": {
-        "googleMaps": {
-          "apiKey": "YOUR_API_KEY"
+#### **Current Default: Open Source Leaflet Maps**
+The application is currently configured to use **Leaflet Maps (WebView)** with OpenStreetMap.
+*   **No API Key Required:** Works out of the box.
+*   **Open Source:** Uses free map data.
+*   **Implementation:** Located in `src/components/LeafletMap.js`.
+
+#### **Optional: Switching to Google Maps SDK**
+If you prefer the performance and look of native Google Maps, you can switch the provider. **Note: This requires an API Key and recompiling the app.**
+
+1.  **Get an API Key:**
+    *   Visit the [Google Cloud Console](https://console.cloud.google.com/).
+    *   Enable **"Maps SDK for Android"**.
+    *   Create a credential (API Key).
+
+2.  **Configure the App:**
+    *   Open `app.json` and add your key under `android.config.googleMaps.apiKey`:
+        ```json
+        "android": {
+          "package": "com.dharaneeshrs007.neuronav",
+          "config": {
+            "googleMaps": {
+              "apiKey": "PASTE_YOUR_API_KEY_HERE"
+            }
+          }
         }
-      }
-    }
-    ```
-3.  Uncomment `MapView` in `DashboardScreen.js` and `RoutePlanningScreen.js`.
+        ```
+
+3.  **Update Code:**
+    *   In `DashboardScreen.js` and `RoutePlanningScreen.js`, replace `LeafletMap` with `MapView` (Native).
+
+4.  **Important - Compile with Android Studio:**
+    *   Native Google Maps **will not work** in Expo Go if you use custom keys.
+    *   You must compile a development build or APK using **Android Studio** or **EAS Build**.
 
 ## 📸 Demo
 
