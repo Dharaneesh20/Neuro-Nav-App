@@ -172,10 +172,9 @@ Neuro-Nav v2.0 is a sensory-friendly navigation app designed for individuals wit
 - **Firebase ML** - Sensory data processing
 
 ### Maps & Routing
-- **Leaflet.js** - WebView-based mapping
+- **Leaflet.js** - WebView-based mapping (Default)
 - **OpenStreetMap** - Free, community-curated map tiles
-- **OSRM** - Open Source Routing Machine for quiet routing
-- **Google Maps Intents** - Navigation handoff
+- **Google Maps** - Optional (Requires API Key)
 
 ### Data & Storage
 - **AsyncStorage** - Local device storage

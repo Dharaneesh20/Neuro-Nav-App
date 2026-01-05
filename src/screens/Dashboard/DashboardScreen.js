@@ -12,7 +12,7 @@ import SafeHavensPreview from '../../components/SafeHavensPreview';
 import CalmScoreHeader from '../../components/CalmScoreHeader';
 import PanicButton from '../../components/PanicButton';
 
-import GoogleMap from '../../components/GoogleMap';
+import LeafletMap from '../../components/LeafletMap';
 import { fetchNearbyPlaces } from '../../services/places';
 
 const DashboardScreen = () => {
@@ -115,7 +115,7 @@ const DashboardScreen = () => {
                     {loading || !location ? (
                         <ActivityIndicator size="large" color={colors.primary} style={styles.loader} />
                     ) : (
-                        <GoogleMap
+                        <LeafletMap
                             latitude={location.latitude}
                             longitude={location.longitude}
                             style={styles.map}
