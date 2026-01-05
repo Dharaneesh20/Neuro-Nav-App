@@ -114,6 +114,12 @@ Neuro-Nav v2.0 is a sensory-friendly navigation app designed for individuals wit
 - Detailed hazard descriptions with severity ratings
 - Photo uploads for visual context
 
+#### 🔄 Dynamic Map Switching (NEW)
+- **Zero Cost by Default** - Uses OpenStreetMap & Leaflet out of the box.
+- **Runtime API Key Injection** - Users can bring their own Google Maps API Key.
+- **Instant Switch** - Toggle between Leaflet and Google Maps instantly from the Dashboard.
+- **No Rebuild Required** - Changes apply immediately without needing a new APK.
+
 #### 📊 Advanced Trip History
 - Local storage of all past journeys
 - Route analytics and pattern recognition
@@ -172,9 +178,9 @@ Neuro-Nav v2.0 is a sensory-friendly navigation app designed for individuals wit
 - **Firebase ML** - Sensory data processing
 
 ### Maps & Routing
-- **Leaflet.js** - WebView-based mapping (Default)
-- **OpenStreetMap** - Free, community-curated map tiles
-- **Google Maps** - Optional (Requires API Key)
+- **Leaflet.js** - Default Open Source Map
+- **Google Maps** - Optional (User-provided API Key)
+- **OpenStreetMap** - Free, community-curated data
 
 ### Data & Storage
 - **AsyncStorage** - Local device storage

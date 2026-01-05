@@ -1,6 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, ActivityIndicator, Alert, Keyboard, Linking } from 'react-native';
-import GoogleMap from '../../components/GoogleMap';
+import LeafletMap from '../../components/LeafletMap';
+import GoogleMapWebView from '../../components/GoogleMapWebView';
 import { useTheme } from '../../context/ThemeContext';
 import { spacing } from '../../styles/spacing';
 import Button from '../../components/Button';
@@ -24,6 +25,24 @@ const RoutePlanningScreen = () => {
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
     });
+
+    const [mapProvider, setMapProvider] = useState('leaflet');
+    const [googleApiKey, setGoogleApiKey] = useState('');
+
+    useEffect(() => {
+        loadMapSettings();
+    }, []);
+
+    const loadMapSettings = async () => {
+        try {
+            const savedProvider = await AsyncStorage.getItem('mapProvider');
+            const savedKey = await AsyncStorage.getItem('googleMapsApiKey');
+            if (savedProvider) setMapProvider(savedProvider);
+            if (savedKey) setGoogleApiKey(savedKey);
+        } catch (e) {
+            console.log('Failed to load map settings');
+        }
+    };
 
     const handlePlanRoute = async () => {
         Keyboard.dismiss();
@@ -173,17 +192,31 @@ const RoutePlanningScreen = () => {
             )}
 
             {/* Map Area */}
-            <GoogleMap
-                latitude={region.latitude}
-                longitude={region.longitude}
-                zoom={12}
-                style={styles.map}
-                markers={[
-                    markers.start && { ...markers.start, title: 'Start' },
-                    markers.end && { ...markers.end, title: 'Destination' }
-                ].filter(Boolean)}
-                routeCoordinates={routeData?.coordinates}
-            />
+            {/* Map Area */}
+            {mapProvider === 'google' && googleApiKey ? (
+                <GoogleMapWebView
+                    latitude={region.latitude}
+                    longitude={region.longitude}
+                    apiKey={googleApiKey}
+                    style={styles.map}
+                    markers={[
+                        markers.start && { ...markers.start, title: 'Start' },
+                        markers.end && { ...markers.end, title: 'Destination' }
+                    ].filter(Boolean)}
+                    routeCoordinates={routeData?.coordinates}
+                />
+            ) : (
+                <LeafletMap
+                    latitude={region.latitude}
+                    longitude={region.longitude}
+                    style={styles.map}
+                    markers={[
+                        markers.start && { ...markers.start, title: 'Start' },
+                        markers.end && { ...markers.end, title: 'Destination' }
+                    ].filter(Boolean)}
+                    routeCoordinates={routeData?.coordinates}
+                />
+            )}
         </View>
     );
 };

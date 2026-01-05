@@ -2,9 +2,9 @@ import React from 'react';
 import { WebView } from 'react-native-webview';
 import { StyleSheet, View, ActivityIndicator } from 'react-native';
 
-const LeafletMap = ({ latitude, longitude, style }) => {
-    // Basic HTML content with Leaflet JS
-    const htmlContent = `
+const LeafletMap = ({ latitude, longitude, routeCoordinates = [], markers = [], style }) => {
+  // Basic HTML content with Leaflet JS
+  const htmlContent = `
     <!DOCTYPE html>
     <html>
       <head>
@@ -23,49 +23,59 @@ const LeafletMap = ({ latitude, longitude, style }) => {
           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           }).addTo(map);
+
+          // Marker
           L.marker([${latitude}, ${longitude}]).addTo(map)
             .bindPopup('You are here')
             .openPopup();
+
+          // Route
+          var routeCoords = ${JSON.stringify(routeCoordinates || [])};
+          if (routeCoords.length > 0) {
+             var path = routeCoords.map(c => [c.latitude, c.longitude]);
+             var polyline = L.polyline(path, {color: 'blue'}).addTo(map);
+             map.fitBounds(polyline.getBounds(), {padding: [50, 50]});
+          }
         </script>
       </body>
     </html>
   `;
 
-    return (
-        <View style={[styles.container, style]}>
-            <WebView
-                originWhitelist={['*']}
-                source={{ html: htmlContent }}
-                style={styles.webview}
-                startInLoadingState={true}
-                renderLoading={() => (
-                    <View style={styles.loadingContainer}>
-                        <ActivityIndicator size="large" color="#0000ff" />
-                    </View>
-                )}
-            />
-        </View>
-    );
+  return (
+    <View style={[styles.container, style]}>
+      <WebView
+        originWhitelist={['*']}
+        source={{ html: htmlContent }}
+        style={styles.webview}
+        startInLoadingState={true}
+        renderLoading={() => (
+          <View style={styles.loadingContainer}>
+            <ActivityIndicator size="large" color="#0000ff" />
+          </View>
+        )}
+      />
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        overflow: 'hidden',
-    },
-    webview: {
-        flex: 1,
-    },
-    loadingContainer: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    },
+  container: {
+    flex: 1,
+    overflow: 'hidden',
+  },
+  webview: {
+    flex: 1,
+  },
+  loadingContainer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+  },
 });
 
 export default LeafletMap;

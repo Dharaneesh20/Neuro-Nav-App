@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView, ActivityIndicator, Alert, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, ActivityIndicator, Alert, TouchableOpacity, Image, Modal, TextInput } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from '../../context/ThemeContext';
 import { spacing } from '../../styles/spacing';
@@ -13,6 +14,7 @@ import CalmScoreHeader from '../../components/CalmScoreHeader';
 import PanicButton from '../../components/PanicButton';
 
 import LeafletMap from '../../components/LeafletMap';
+import GoogleMapWebView from '../../components/GoogleMapWebView';
 import { fetchNearbyPlaces } from '../../services/places';
 
 const DashboardScreen = () => {
@@ -25,10 +27,63 @@ const DashboardScreen = () => {
     const [placesLoading, setPlacesLoading] = useState(true);
     const insets = useSafeAreaInsets();
 
+    // Map Settings State
+    const [mapProvider, setMapProvider] = useState('leaflet'); // 'leaflet' or 'google'
+    const [googleApiKey, setGoogleApiKey] = useState('');
+    const [showMapSettings, setShowMapSettings] = useState(false);
+    const [tempApiKey, setTempApiKey] = useState('');
+
+    useEffect(() => {
+        loadMapSettings();
+    }, []);
+
+    const loadMapSettings = async () => {
+        try {
+            const savedProvider = await AsyncStorage.getItem('mapProvider');
+            const savedKey = await AsyncStorage.getItem('googleMapsApiKey');
+            if (savedProvider) setMapProvider(savedProvider);
+            if (savedKey) {
+                setGoogleApiKey(savedKey);
+                setTempApiKey(savedKey);
+            }
+        } catch (e) {
+            console.log('Failed to load map settings');
+        }
+    };
+
+    const saveGoogleMapsKey = async () => {
+        if (!tempApiKey.trim()) {
+            Alert.alert('Error', 'Please enter a valid API Key');
+            return;
+        }
+        try {
+            await AsyncStorage.setItem('googleMapsApiKey', tempApiKey.trim());
+            await AsyncStorage.setItem('mapProvider', 'google');
+            setGoogleApiKey(tempApiKey.trim());
+            setMapProvider('google');
+            setShowMapSettings(false);
+            Alert.alert('Success', 'Switched to Google Maps!');
+        } catch (e) {
+            Alert.alert('Error', 'Failed to save settings');
+        }
+    };
+
+    const switchToLeaflet = async () => {
+        try {
+            await AsyncStorage.setItem('mapProvider', 'leaflet');
+            setMapProvider('leaflet');
+            setShowMapSettings(false);
+            Alert.alert('Success', 'Switched to Open Source Maps (Leaflet)!');
+        } catch (e) {
+            Alert.alert('Error', 'Failed to save settings');
+        }
+    };
+
     useEffect(() => {
         let isMounted = true;
 
         (async () => {
+            // ... existing location initialization ...
             try {
                 let { status } = await Location.requestForegroundPermissionsAsync();
                 if (!isMounted) return;
@@ -96,6 +151,10 @@ const DashboardScreen = () => {
                     <Text style={[styles.appTitle, { color: colors.text }]}>Neuro-Nav</Text>
 
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <TouchableOpacity onPress={() => setShowMapSettings(true)} style={{ marginRight: 15 }}>
+                            <Ionicons name="map-outline" size={28} color={colors.text} />
+                        </TouchableOpacity>
+
                         <TouchableOpacity onPress={() => navigation.navigate('Chat')} style={{ marginRight: 15 }}>
                             <Ionicons name="chatbubbles-outline" size={28} color={colors.text} />
                         </TouchableOpacity>
@@ -109,17 +168,63 @@ const DashboardScreen = () => {
                     </View>
                 </View>
 
+                {/* Map Settings Modal */}
+                <Modal
+                    visible={showMapSettings}
+                    transparent={true}
+                    animationType="slide"
+                    onRequestClose={() => setShowMapSettings(false)}
+                >
+                    <View style={styles.modalOverlay}>
+                        <View style={[styles.modalContent, { backgroundColor: colors.card }]}>
+                            <Text style={[styles.modalTitle, { color: colors.text }]}>Map Settings</Text>
+
+                            <Text style={[styles.modalSubtitle, { color: colors.text }]}>Google Maps API Key</Text>
+                            <TextInput
+                                style={[styles.input, { color: colors.text, borderColor: colors.border }]}
+                                placeholder="Paste your API Key here"
+                                placeholderTextColor={colors.muted}
+                                value={tempApiKey}
+                                onChangeText={setTempApiKey}
+                            />
+
+                            <TouchableOpacity style={[styles.saveButton, { backgroundColor: colors.primary }]} onPress={saveGoogleMapsKey}>
+                                <Text style={styles.buttonText}>Save & Use Google Maps</Text>
+                            </TouchableOpacity>
+
+                            <View style={styles.divider} />
+
+                            <TouchableOpacity style={[styles.outlineButton, { borderColor: colors.primary }]} onPress={switchToLeaflet}>
+                                <Text style={[styles.outlineButtonText, { color: colors.primary }]}>Go Open Source (Leaflet)</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={styles.closeButton} onPress={() => setShowMapSettings(false)}>
+                                <Text style={{ color: colors.muted }}>Close</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </Modal>
+
                 <CalmScoreHeader score={7.2} location={address} />
 
                 <View style={styles.mapContainer}>
                     {loading || !location ? (
                         <ActivityIndicator size="large" color={colors.primary} style={styles.loader} />
                     ) : (
-                        <LeafletMap
-                            latitude={location.latitude}
-                            longitude={location.longitude}
-                            style={styles.map}
-                        />
+                        mapProvider === 'google' && googleApiKey ? (
+                            <GoogleMapWebView
+                                latitude={location.latitude}
+                                longitude={location.longitude}
+                                apiKey={googleApiKey}
+                                style={styles.map}
+                            />
+                        ) : (
+                            <LeafletMap
+                                latitude={location.latitude}
+                                longitude={location.longitude}
+                                style={styles.map}
+                            />
+                        )
                     )}
                     <View style={styles.panicContainer}>
                         <PanicButton />
