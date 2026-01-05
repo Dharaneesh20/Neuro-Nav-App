@@ -24,7 +24,7 @@
       "package": "com.dharaneeshrs007.neuronav",
       "config": {
         "googleMaps": {
-          "apiKey": "AIzaSyAfYcu51qxMwiDj1vX2T-uPFMlI9ogqRXU"
+          "apiKey": "YOUR_GOOGLE_MAPS_API_KEY_HERE"
         }
       }
     },
