@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const MOCK_HAVENS = [
-    { id: '1', name: 'Riverside Park', type: 'Park', distance: '0.2 mi', score: 9.2 },
-    { id: '2', name: 'Central Library', type: 'Library', distance: '0.5 mi', score: 8.8 },
-    { id: '3', name: 'Quiet Cafe', type: 'Cafe', distance: '0.8 mi', score: 7.5 },
+    { id: '1', name: 'Riverside Park', type: 'Park', distance: '0.2 mi', score: 9.2, latitude: 40.8006, longitude: -73.9712 },
+    { id: '2', name: 'Central Library', type: 'Library', distance: '0.5 mi', score: 8.8, latitude: 40.7580, longitude: -73.9632 },
+    { id: '3', name: 'Quiet Cafe', type: 'Cafe', distance: '0.8 mi', score: 7.5, latitude: 40.7300, longitude: -73.9950 },
 ];
 
 /**
@@ -14,7 +14,7 @@ const MOCK_HAVENS = [
  * @param {number} lon - Longitude
  * @param {number} radius - Search radius in meters (default 1000m)
  */
-export const fetchNearbyPlaces = async (lat, lon, radius = 1000) => {
+export const fetchNearbyPlaces = async (lat, lon, radius = 4000) => {
     try {
         console.log(`Fetching places for ${lat}, ${lon} radius ${radius}`);
         // Query for cafes, libraries, parks, and places of worship

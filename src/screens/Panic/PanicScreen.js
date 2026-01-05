@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, Animated, Alert } from 'react-native';
+import { View, Text, StyleSheet, Animated, Alert, Linking } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import * as Location from 'expo-location';
 import { useTheme } from '../../context/ThemeContext';
 import { spacing, borderRadius } from '../../styles/spacing';
 import Button from '../../components/Button';
 import Card from '../../components/Card';
+import { fetchNearbyPlaces } from '../../services/places';
 
 const PanicScreen = () => {
     const navigation = useNavigation();
@@ -47,23 +48,56 @@ const PanicScreen = () => {
             let { status } = await Location.requestForegroundPermissionsAsync();
             if (status !== 'granted') {
                 Alert.alert('Permission denied', 'Cannot find nearest haven without location.');
-                // Fallback or exit
                 return;
             }
 
-            // Mock finding logic (simulate API delay)
-            setTimeout(() => {
+            const location = await Location.getCurrentPositionAsync({});
+            const { latitude, longitude } = location.coords;
+
+            // Fetch Real Data
+            const places = await fetchNearbyPlaces(latitude, longitude);
+
+            if (places && places.length > 0) {
+                // Pick the first one (nearest)
+                const nearest = places[0];
+
+                // Calculate rough distance/time if not present (simple mock calc for now if needed, or rely on API data if available)
+                // Assuming place object has: name, vicinity (address), types
+
                 setNearestHaven({
-                    name: "Riverside Park",
-                    type: "Park",
-                    distance: "0.2 mi",
-                    walkTime: "4 min",
+                    name: nearest.name,
+                    type: nearest.types ? nearest.types[0].replace('_', ' ').toUpperCase() : 'SAFE HAVEN',
+                    distance: "Nearby", // We could calculate real distance here if we needed
+                    walkTime: "5 min", // Mock walk time for now or calc based on distance
+                    latitude: nearest.latitude,
+                    longitude: nearest.longitude,
                 });
                 setPhase('found');
-            }, 2000);
+            } else {
+                // Fallback if no places found
+                setNearestHaven({
+                    name: "Unknown Safe Haven",
+                    type: "Location",
+                    distance: "-",
+                    walkTime: "-",
+                    latitude: latitude + 0.002, // Mock small offset
+                    longitude: longitude + 0.002,
+                });
+                setPhase('found');
+            }
 
         } catch (error) {
             console.error(error);
+            Alert.alert('Error', 'Could not find safe havens.');
+        }
+    };
+
+    const handleNavigation = () => {
+        if (nearestHaven && nearestHaven.latitude && nearestHaven.longitude) {
+            const url = `https://www.google.com/maps/dir/?api=1&destination=${nearestHaven.latitude},${nearestHaven.longitude}&travelmode=walking`;
+            Linking.openURL(url).catch(err => console.error('An error occurred', err));
+        } else {
+            Alert.alert('Error', 'Location coordinates not available.');
         }
     };
 
@@ -95,7 +129,7 @@ const PanicScreen = () => {
                     </Card>
 
                     <View style={styles.actions}>
-                        <Button title="Navigate Now" size="lg" onPress={() => Alert.alert('Navigating...')} style={{ marginBottom: spacing.md }} />
+                        <Button title="Navigate Now" size="lg" onPress={handleNavigation} style={{ marginBottom: spacing.md }} />
                         <Button title="I'm feeling better" variant="outline" onPress={() => navigation.goBack()} />
                     </View>
                 </View>

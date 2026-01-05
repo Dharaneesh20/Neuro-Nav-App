@@ -2,7 +2,7 @@
   "expo": {
     "name": "neuro-nav-rn",
     "slug": "neuro-nav-rn",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -21,7 +21,12 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.dharaneeshrs007.neuronav"
+      "package": "com.dharaneeshrs007.neuronav",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyAfYcu51qxMwiDj1vX2T-uPFMlI9ogqRXU"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"

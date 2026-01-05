@@ -5,6 +5,8 @@ import { useAuth } from '../context/AuthContext';
 import ReferenceScreen from '../screens/PlaceholderScreen'; // For missing routes
 import PanicScreen from '../screens/Panic/PanicScreen';
 import SafeHavensScreen from '../screens/SafeHavens/SafeHavensScreen';
+import ChatScreen from '../screens/Chat/ChatScreen';
+import GeminiChatScreen from '../screens/Chat/GeminiChatScreen';
 
 import LandingScreen from '../screens/Landing/LandingScreen';
 import LoginScreen from '../screens/Login/LoginScreen';
@@ -41,6 +43,8 @@ const RootNavigator = () => {
                     <Stack.Screen name="Spotify" component={SpotifyScreen} />
                     <Stack.Screen name="Profile" component={ProfileScreen} />
                     <Stack.Screen name="ProfileSetup" component={ProfileSetupScreen} />
+                    <Stack.Screen name="Chat" component={ChatScreen} />
+                    <Stack.Screen name="GeminiChat" component={GeminiChatScreen} />
                 </>
             ) : (
                 <>

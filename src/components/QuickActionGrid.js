@@ -10,7 +10,7 @@ const ACTIONS = [
     { id: 'history', label: 'History', icon: '📊', route: 'History', color: '#B8A8D6' },
     { id: 'plan', label: 'Plan Trip', icon: '🗺️', route: 'Routes', color: '#FFD93D' },
     { id: 'spotify', label: 'Music Player', icon: '🎵', route: 'Spotify', color: '#1DB954' },
-    { id: 'mix', label: 'Daily Calm', icon: '🎧', route: 'Spotify', color: '#4A90E2' },
+    { id: 'gemini', label: 'Gemini AI', icon: '✨', route: 'GeminiChat', color: '#4A90E2' },
 ];
 
 const QuickActionGrid = () => {

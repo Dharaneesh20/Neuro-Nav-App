@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-// import auth from '@react-native-firebase/auth';
-// import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import { auth } from '../services/firebase';
+import { onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth'; // JS SDK imports
+import { auth } from '../services/firebaseConfig'; // Import initialized auth instance
 
 const AuthContext = createContext({});
 
@@ -11,36 +10,38 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    // Simulate loading User
+    // Handle user state changes
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setLoading(false);
-        }, 1000);
-        return () => clearTimeout(timer);
+        const unsubscribe = onAuthStateChanged(auth, (usr) => {
+            setUser(usr);
+            if (loading) setLoading(false);
+        });
+        return unsubscribe; // unsubscribe on unmount
     }, []);
 
     const loginWithGoogle = async () => {
         try {
             setLoading(true);
-            // SIMULATED LOGIN FOR DEMO
-            console.log("Simulating Login...");
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            setUser({
-                uid: 'demo-user-123',
-                displayName: 'Demo User',
-                email: 'user@neuronav.com',
-                photoURL: 'https://via.placeholder.com/150'
-            });
-            setLoading(false);
+            console.log("Attempting demo login...");
+            const email = "demo@neuronav.com";
+            const password = "password123";
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+            } catch (error) {
+                // If user doesn't exist or other issue, try creating
+                console.log("Login failed, attempting to create demo user...", error.code);
+                await createUserWithEmailAndPassword(auth, email, password);
+            }
         } catch (error) {
-            console.error("Login Failed", error);
+            console.error("Authentication Error", error);
             setLoading(false);
         }
     };
 
     const logout = async () => {
         try {
-            setUser(null);
+            await signOut(auth);
         } catch (error) {
             console.error("Logout Failed", error);
         }

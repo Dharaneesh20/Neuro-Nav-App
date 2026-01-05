@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Linking, Alert } from 'react-native';
 import { useTheme } from '../context/ThemeContext';
 import { spacing, borderRadius } from '../styles/spacing';
 import Card from './Card';
@@ -7,16 +7,27 @@ import Card from './Card';
 const SafeHavensPreview = ({ places = [], loading = false }) => {
     const { colors } = useTheme();
 
+    const handlePress = (item) => {
+        if (item.latitude && item.longitude) {
+            const url = `https://www.google.com/maps/dir/?api=1&destination=${item.latitude},${item.longitude}&travelmode=walking`;
+            Linking.openURL(url).catch(err => console.error('An error occurred', err));
+        } else {
+            Alert.alert('Location Missing', 'Coordinates for this place are unavailable.');
+        }
+    };
+
     const renderItem = ({ item }) => (
-        <Card style={styles.card} padding="sm">
-            <View style={styles.header}>
-                <Text style={[styles.name, { color: colors.text }]} numberOfLines={1}>{item.name}</Text>
-                <View style={[styles.badge, { backgroundColor: colors.success }]}>
-                    <Text style={styles.score}>{item.score}</Text>
+        <TouchableOpacity activeOpacity={0.8} onPress={() => handlePress(item)}>
+            <Card style={styles.card} padding="sm">
+                <View style={styles.header}>
+                    <Text style={[styles.name, { color: colors.text }]} numberOfLines={1}>{item.name}</Text>
+                    <View style={[styles.badge, { backgroundColor: colors.success }]}>
+                        <Text style={styles.score}>{item.score}</Text>
+                    </View>
                 </View>
-            </View>
-            <Text style={[styles.details, { color: colors.muted }]}>{item.type}</Text>
-        </Card>
+                <Text style={[styles.details, { color: colors.muted }]}>{item.type}</Text>
+            </Card>
+        </TouchableOpacity>
     );
 
     if (loading) {

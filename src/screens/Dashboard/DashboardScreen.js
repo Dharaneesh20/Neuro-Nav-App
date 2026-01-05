@@ -12,7 +12,7 @@ import SafeHavensPreview from '../../components/SafeHavensPreview';
 import CalmScoreHeader from '../../components/CalmScoreHeader';
 import PanicButton from '../../components/PanicButton';
 
-import LeafletMap from '../../components/LeafletMap';
+import GoogleMap from '../../components/GoogleMap';
 import { fetchNearbyPlaces } from '../../services/places';
 
 const DashboardScreen = () => {
@@ -95,12 +95,18 @@ const DashboardScreen = () => {
 
                     <Text style={[styles.appTitle, { color: colors.text }]}>Neuro-Nav</Text>
 
-                    <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-                        <Image
-                            source={{ uri: 'https://via.placeholder.com/150' }}
-                            style={styles.profileImage}
-                        />
-                    </TouchableOpacity>
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <TouchableOpacity onPress={() => navigation.navigate('Chat')} style={{ marginRight: 15 }}>
+                            <Ionicons name="chatbubbles-outline" size={28} color={colors.text} />
+                        </TouchableOpacity>
+
+                        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+                            <Image
+                                source={{ uri: 'https://via.placeholder.com/150' }}
+                                style={styles.profileImage}
+                            />
+                        </TouchableOpacity>
+                    </View>
                 </View>
 
                 <CalmScoreHeader score={7.2} location={address} />
@@ -109,7 +115,7 @@ const DashboardScreen = () => {
                     {loading || !location ? (
                         <ActivityIndicator size="large" color={colors.primary} style={styles.loader} />
                     ) : (
-                        <LeafletMap
+                        <GoogleMap
                             latitude={location.latitude}
                             longitude={location.longitude}
                             style={styles.map}

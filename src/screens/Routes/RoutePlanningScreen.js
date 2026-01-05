@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { View, Text, StyleSheet, TextInput, ActivityIndicator, Alert, Keyboard, Linking } from 'react-native';
-import LeafletMap from '../../components/LeafletMap';
+import GoogleMap from '../../components/GoogleMap';
 import { useTheme } from '../../context/ThemeContext';
 import { spacing } from '../../styles/spacing';
 import Button from '../../components/Button';
@@ -173,7 +173,7 @@ const RoutePlanningScreen = () => {
             )}
 
             {/* Map Area */}
-            <LeafletMap
+            <GoogleMap
                 latitude={region.latitude}
                 longitude={region.longitude}
                 zoom={12}

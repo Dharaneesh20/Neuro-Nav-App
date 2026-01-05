@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "start": "node -r ./polyfill.js node_modules/expo/bin/cli start",
+    "android": "node -r ./polyfill.js node_modules/expo/bin/cli start --android",
+    "ios": "node -r ./polyfill.js node_modules/expo/bin/cli start --ios",
+    "web": "node -r ./polyfill.js node_modules/expo/bin/cli start --web"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "2.2.0",
@@ -23,11 +23,13 @@
     "expo-image-picker": "^17.0.10",
     "expo-location": "~19.0.8",
     "expo-status-bar": "~3.0.9",
+    "firebase": "^12.7.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-native": "0.81.5",
     "react-native-gesture-handler": "~2.28.0",
     "react-native-maps": "1.20.1",
+    "react-native-markdown-display": "^7.0.2",
     "react-native-reanimated": "~4.1.1",
     "react-native-safe-area-context": "~5.6.0",
     "react-native-screens": "~4.16.0",
