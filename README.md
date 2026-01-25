@@ -4,7 +4,7 @@
 
 <img src="assets/logo.png" alt="Neuro-Nav Logo" width="150" height="150" />
 
-[![Download APK](https://img.shields.io/badge/Download-Android%20APK%20v4.0.0-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/Dharaneesh20/Neuro-Nav-App/releases/download/v4.0.0/neuro-nav-v4.apk)
+[![Download APK](https://img.shields.io/badge/Download-Android%20APK%20v4.0.0-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/Dharaneesh20/Neuro-Nav-App/releases/tag/v4.0.0)
 
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Dharaneesh20/Neuro-Nav-App)
 [![License](https://img.shields.io/badge/License-ISC-blue?style=flat-square)](LICENSE)
@@ -88,7 +88,7 @@ Neuro-Nav v4.0 is a sensory-friendly navigation app for individuals with ASD, AD
 
 ## 📥 Quick Download
 
-**[⬇️ Download Neuro-Nav v4.0.0 APK](https://github.com/Dharaneesh20/Neuro-Nav-App/releases/download/v4.0.0/neuro-nav-v4.apk)**
+**[⬇️ Download Neuro-Nav v4.0.0 APK](https://github.com/Dharaneesh20/Neuro-Nav-App/releases/tag/v4.0.0)**
 
 - **File Size:** ~50MB
 - **Android Version:** 8.0+
@@ -127,7 +127,7 @@ Neuro-Nav v4.0 is a sensory-friendly navigation app for individuals with ASD, AD
 ### Option 1: Install APK (Recommended)
 
 #### Step 1: Download
-Click here: **[Neuro-Nav v4.0.0 APK](https://github.com/Dharaneesh20/Neuro-Nav-App/releases/download/v4.0.0/neuro-nav-v4.apk)**
+Click here: **[Neuro-Nav v4.0.0 APK](https://github.com/Dharaneesh20/Neuro-Nav-App/releases/tag/v4.0.0)**
 
 #### Step 2: Enable Unknown Sources
 1. Open **Settings** → **Apps & notifications**
