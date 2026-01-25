@@ -6,6 +6,8 @@ import { AuthProvider } from './src/context/AuthContext';
 import RootNavigator from './src/navigation/RootNavigator';
 import LoginScreen from './src/screens/Login/LoginScreen';
 
+import Constants from 'expo-constants';
+
 export default function App() {
   return (
     <SafeAreaProvider>

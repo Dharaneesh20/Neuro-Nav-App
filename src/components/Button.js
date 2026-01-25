@@ -21,17 +21,22 @@ const Button = ({
             case 'secondary': return colors.secondary;
             case 'danger': return colors.accent;
             case 'outline': return 'transparent';
+            case 'glass': return colors.glass;
+            case 'neon': return colors.neon;
             default: return colors.primary;
         }
     };
 
     const getTextColor = () => {
         if (variant === 'outline') return colors.primary;
+        if (variant === 'glass') return colors.text;
+        if (variant === 'neon') return '#000000'; // Black text on neon green
         return '#FFFFFF'; // Contrast text for filled buttons
     };
 
     const getBorder = () => {
         if (variant === 'outline') return { borderWidth: 2, borderColor: colors.primary };
+        if (variant === 'glass') return { borderWidth: 1, borderColor: colors.glassBorder };
         return {};
     };
 

@@ -88,7 +88,7 @@ const RoutePlanningScreen = () => {
             if (route) {
                 setRouteData(route);
 
-                // Save to History
+                // Save to History (Firestore + AsyncStorage)
                 try {
                     const newTrip = {
                         start: startLoc.name || startQuery || "Current Location",
@@ -97,10 +97,10 @@ const RoutePlanningScreen = () => {
                         quietScore: route.quietScore,
                         date: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
                     };
-                    const existingHistory = await AsyncStorage.getItem('trip_history');
-                    const history = existingHistory ? JSON.parse(existingHistory) : [];
-                    history.push(newTrip);
-                    await AsyncStorage.setItem('trip_history', JSON.stringify(history));
+
+                    // Import at the top of file: import { saveTripToHistory } from '../../services/tripHistoryService';
+                    const { saveTripToHistory } = require('../../services/tripHistoryService');
+                    await saveTripToHistory(newTrip);
                 } catch (e) {
                     console.error("Failed to save history", e);
                 }

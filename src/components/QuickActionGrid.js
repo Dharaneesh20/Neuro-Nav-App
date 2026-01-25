@@ -6,7 +6,8 @@ import { spacing, borderRadius } from '../styles/spacing';
 
 const ACTIONS = [
     { id: 'panic', label: 'Panic Mode', icon: '🚨', route: 'Panic', color: '#FF6B6B' },
-    { id: 'report', label: 'Report', icon: '📸', route: 'Community', color: '#4ECDC4' },
+    { id: 'report', label: 'Report', icon: '📸', route: 'Community Report', color: '#4ECDC4' },
+    { id: 'community', label: 'Community', icon: '👥', route: 'Community', color: '#7C3AED' },
     { id: 'history', label: 'History', icon: '📊', route: 'History', color: '#B8A8D6' },
     { id: 'plan', label: 'Plan Trip', icon: '🗺️', route: 'Routes', color: '#FFD93D' },
     { id: 'spotify', label: 'Music Player', icon: '🎵', route: 'Spotify', color: '#1DB954' },

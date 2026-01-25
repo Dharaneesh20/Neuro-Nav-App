@@ -16,8 +16,10 @@ import DashboardScreen from '../screens/Dashboard/DashboardScreen';
 import RoutePlanningScreen from '../screens/Routes/RoutePlanningScreen';
 import SpotifyScreen from '../screens/Spotify/SpotifyScreen';
 import ReportScreen from '../screens/Community/ReportScreen';
+import CommunityScreen from '../screens/Community/CommunityScreen';
 import ProfileScreen from '../screens/Profile/ProfileScreen';
 import HistoryScreen from '../screens/History/HistoryScreen';
+import AboutScreen from '../screens/About/AboutScreen';
 import { View } from 'react-native';
 
 const Stack = createStackNavigator();
@@ -37,7 +39,8 @@ const RootNavigator = () => {
                     <Stack.Screen name="Panic" component={PanicScreen} />
                     <Stack.Screen name="SafeHavens" component={SafeHavensScreen} />
                     {/* Phase 2 Placeholders */}
-                    <Stack.Screen name="Community" component={ReportScreen} />
+                    <Stack.Screen name="Community Report" component={ReportScreen} />
+                    <Stack.Screen name="Community" component={CommunityScreen} />
                     <Stack.Screen name="History" component={HistoryScreen} />
                     <Stack.Screen name="Routes" component={RoutePlanningScreen} />
                     <Stack.Screen name="Spotify" component={SpotifyScreen} />
@@ -45,6 +48,7 @@ const RootNavigator = () => {
                     <Stack.Screen name="ProfileSetup" component={ProfileSetupScreen} />
                     <Stack.Screen name="Chat" component={ChatScreen} />
                     <Stack.Screen name="GeminiChat" component={GeminiChatScreen} />
+                    <Stack.Screen name="About" component={AboutScreen} />
                 </>
             ) : (
                 <>

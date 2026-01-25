@@ -1,40 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Alert } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTheme } from '../../context/ThemeContext';
 import { spacing } from '../../styles/spacing';
 import Card from '../../components/Card';
 import { Ionicons } from '@expo/vector-icons';
 import { useIsFocused } from '@react-navigation/native';
+import { getTripHistory, clearTripHistory, subscribeToTripHistory } from '../../services/tripHistoryService';
 
 const HistoryScreen = () => {
     const { colors } = useTheme();
     const [history, setHistory] = useState([]);
-    const isFocused = useIsFocused(); // Reload when screen comes into focus
+    const [loading, setLoading] = useState(true);
+    const isFocused = useIsFocused();
 
     useEffect(() => {
         if (isFocused) {
             loadHistory();
+
+            // Set up real-time listener for Firestore updates
+            const unsubscribe = subscribeToTripHistory((trips) => {
+                setHistory(trips);
+                setLoading(false);
+            });
+
+            return () => unsubscribe();
         }
     }, [isFocused]);
 
     const loadHistory = async () => {
         try {
-            const storedHistory = await AsyncStorage.getItem('trip_history');
-            if (storedHistory) {
-                setHistory(JSON.parse(storedHistory).reverse()); // Show newest first
-            }
+            setLoading(true);
+            const trips = await getTripHistory();
+            setHistory(trips);
         } catch (error) {
             console.error("Failed to load history:", error);
+        } finally {
+            setLoading(false);
         }
     };
 
-    const clearHistory = async () => {
+    const handleClearHistory = async () => {
         try {
-            await AsyncStorage.removeItem('trip_history');
+            await clearTripHistory();
             setHistory([]);
         } catch (error) {
             console.error("Failed to clear history:", error);
+            Alert.alert("Error", "Failed to clear history");
         }
     };
 
@@ -44,7 +55,7 @@ const HistoryScreen = () => {
             "Are you sure you want to delete all trip history?",
             [
                 { text: "Cancel", style: "cancel" },
-                { text: "Delete", style: "destructive", onPress: clearHistory }
+                { text: "Delete", style: "destructive", onPress: handleClearHistory }
             ]
         );
     };

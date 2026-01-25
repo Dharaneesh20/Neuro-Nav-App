@@ -15,9 +15,10 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import Markdown from 'react-native-markdown-display';
 import axios from 'axios';
+import Constants from 'expo-constants';
 import { useNavigation } from "@react-navigation/native";
 
-const API_KEY = "AIzaSyDBhxWPipMTJMpWjxIdNbLva6_rQsMSLZg";
+const API_KEY = Constants.expoConfig?.extra?.geminiApiKey;
 
 const GeminiChatScreen = () => {
     const [messages, setMessages] = useState([
@@ -30,7 +31,6 @@ const GeminiChatScreen = () => {
     const [loading, setLoading] = useState(false);
     const scrollViewRef = useRef();
     const navigation = useNavigation();
-
     const handleSend = async () => {
         if (!inputText.trim()) return;
 
@@ -39,10 +39,12 @@ const GeminiChatScreen = () => {
         setInputText("");
         setLoading(true);
         Keyboard.dismiss();
-
         try {
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
+            console.log("GeminiChat: Requesting URL:", apiUrl);
+
             const response = await axios.post(
-                `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`,
+                apiUrl,
                 {
                     contents: [
                         {
@@ -61,6 +63,9 @@ const GeminiChatScreen = () => {
             setMessages((prev) => [...prev, botContent]);
         } catch (error) {
             console.error("Gemini API Error:", error);
+            if (error.response) {
+                console.error("Gemini Error Details:", JSON.stringify(error.response.data, null, 2));
+            }
             let errorMessage = "Sorry, I encountered an error. Please try again.";
 
             if (error.response && error.response.status === 429) {

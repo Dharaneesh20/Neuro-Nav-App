@@ -1,54 +1,87 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth'; // JS SDK imports
-import { auth } from '../services/firebaseConfig'; // Import initialized auth instance
+import {
+    signInWithGoogle,
+    signOut as firebaseSignOut,
+    onAuthStateChanged,
+    getCurrentUser
+} from '../services/firebase/authService';
 
 const AuthContext = createContext({});
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => {
+    const context = useContext(AuthContext);
+    if (!context) {
+        throw new Error('useAuth must be used within an AuthProvider');
+    }
+    return context;
+};
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    // Handle user state changes
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (usr) => {
-            setUser(usr);
-            if (loading) setLoading(false);
+        // Subscribe to auth state changes
+        const unsubscribe = onAuthStateChanged((firebaseUser) => {
+            setUser(firebaseUser);
+            setLoading(false);
         });
-        return unsubscribe; // unsubscribe on unmount
+
+        return unsubscribe;
     }, []);
 
     const loginWithGoogle = async () => {
         try {
+            setError(null);
             setLoading(true);
-            console.log("Attempting demo login...");
-            const email = "demo@neuronav.com";
-            const password = "password123";
+            const firebaseUser = await signInWithGoogle();
+            setUser(firebaseUser);
 
+            // Auto-sync local history to Firestore after login
             try {
-                await signInWithEmailAndPassword(auth, email, password);
-            } catch (error) {
-                // If user doesn't exist or other issue, try creating
-                console.log("Login failed, attempting to create demo user...", error.code);
-                await createUserWithEmailAndPassword(auth, email, password);
+                const { syncLocalHistoryToFirestore } = require('../services/tripHistoryService');
+                await syncLocalHistoryToFirestore();
+            } catch (syncError) {
+                console.log('History sync skipped:', syncError.message);
             }
-        } catch (error) {
-            console.error("Authentication Error", error);
+
+            return firebaseUser;
+        } catch (err) {
+            setError(err.message);
+            console.error('Login error:', err);
+            throw err;
+        } finally {
             setLoading(false);
         }
     };
 
     const logout = async () => {
         try {
-            await signOut(auth);
-        } catch (error) {
-            console.error("Logout Failed", error);
+            setError(null);
+            setLoading(true);
+            await firebaseSignOut();
+            setUser(null);
+        } catch (err) {
+            setError(err.message);
+            console.error('Logout error:', err);
+            throw err;
+        } finally {
+            setLoading(false);
         }
     };
 
+    const value = {
+        user,
+        loading,
+        error,
+        loginWithGoogle,
+        logout,
+        isAuthenticated: !!user,
+    };
+
     return (
-        <AuthContext.Provider value={{ user, loginWithGoogle, logout, loading }}>
+        <AuthContext.Provider value={value}>
             {children}
         </AuthContext.Provider>
     );

@@ -144,7 +144,7 @@ const DashboardScreen = () => {
             <ScrollView contentContainerStyle={styles.scrollContent} removeClippedSubviews={true}>
                 {/* APP HEADER */}
                 <View style={[styles.header, { borderBottomColor: colors.border, paddingTop: insets.top + 10 }]}>
-                    <TouchableOpacity onPress={() => Alert.alert('Menu', 'Open Drawer Navigation')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('About')}>
                         <Ionicons name="menu" size={28} color={colors.text} />
                     </TouchableOpacity>
 
@@ -178,8 +178,9 @@ const DashboardScreen = () => {
                     <View style={styles.modalOverlay}>
                         <View style={[styles.modalContent, { backgroundColor: colors.card }]}>
                             <Text style={[styles.modalTitle, { color: colors.text }]}>Map Settings</Text>
+                            <Text style={[styles.modalSubtitle, { color: colors.muted }]}>Choose your preferred map engine</Text>
 
-                            <Text style={[styles.modalSubtitle, { color: colors.text }]}>Google Maps API Key</Text>
+                            <Text style={{ fontSize: 12, fontWeight: '700', marginBottom: 5, color: colors.text, marginLeft: 2 }}>GOOGLE MAPS API KEY (OPTIONAL)</Text>
                             <TextInput
                                 style={[styles.input, { color: colors.text, borderColor: colors.border }]}
                                 placeholder="Paste your API Key here"
@@ -243,6 +244,83 @@ const DashboardScreen = () => {
 const styles = StyleSheet.create({
     container: { flex: 1 },
     scrollContent: { paddingBottom: 80 },
+    // Modal Styles
+    modalOverlay: {
+        flex: 1,
+        backgroundColor: 'rgba(0,0,0,0.6)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: spacing.lg,
+    },
+    modalContent: {
+        width: '100%',
+        maxWidth: 340,
+        backgroundColor: '#fff',
+        borderRadius: 20,
+        padding: spacing.lg,
+        elevation: 10,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.25,
+        shadowRadius: 8,
+    },
+    modalTitle: {
+        fontSize: 22,
+        fontWeight: 'bold',
+        marginBottom: spacing.xs,
+        textAlign: 'center',
+    },
+    modalSubtitle: {
+        fontSize: 14,
+        marginBottom: spacing.md,
+        textAlign: 'center',
+        opacity: 0.7,
+    },
+    input: {
+        borderWidth: 1,
+        borderColor: '#E0E0E0',
+        backgroundColor: '#F9F9F9',
+        padding: spacing.md,
+        borderRadius: 12,
+        marginBottom: spacing.lg,
+        fontSize: 14,
+    },
+    saveButton: {
+        paddingVertical: spacing.md,
+        borderRadius: 12,
+        alignItems: 'center',
+        marginBottom: spacing.sm,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 2,
+    },
+    buttonText: {
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: 16,
+    },
+    outlineButton: {
+        paddingVertical: spacing.md,
+        borderRadius: 12,
+        alignItems: 'center',
+        borderWidth: 1,
+        marginBottom: spacing.md,
+    },
+    outlineButtonText: {
+        fontWeight: '600',
+        fontSize: 15,
+    },
+    closeButton: {
+        alignItems: 'center',
+        padding: spacing.sm,
+    },
+    divider: {
+        height: 1,
+        backgroundColor: '#F0F0F0',
+        marginVertical: spacing.md,
+    },
     mapContainer: {
         height: 300,
         marginHorizontal: spacing.md,

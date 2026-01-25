@@ -4,6 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
 import { spacing } from '../../styles/spacing';
 import Button from '../../components/Button';
+import ScreenWrapper from '../../components/ScreenWrapper';
 import Card from '../../components/Card';
 
 const LoginScreen = () => {
@@ -11,14 +12,14 @@ const LoginScreen = () => {
     const { colors } = useTheme();
 
     return (
-        <View style={[styles.container, { backgroundColor: colors.background }]}>
+        <ScreenWrapper style={styles.container}>
             <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.keyboardView}>
                 <View style={styles.logoContainer}>
                     <Text style={[styles.logo, { color: colors.primary }]}>Neuro-Nav</Text>
                     <Text style={[styles.tagline, { color: colors.muted }]}>Find your calm in the chaos.</Text>
                 </View>
 
-                <Card style={styles.loginCard} padding="lg">
+                <Card style={styles.loginCard} padding="lg" variant="glass">
                     <Text style={[styles.welcome, { color: colors.text }]}>Welcome Back</Text>
                     <Text style={[styles.instruction, { color: colors.muted }]}>Sign in to continue your journey</Text>
 
@@ -27,11 +28,11 @@ const LoginScreen = () => {
                         onPress={loginWithGoogle}
                         loading={loading}
                         style={styles.googleBtn}
-                        variant="outline"
+                        variant="glass"
                     />
                 </Card>
             </KeyboardAvoidingView>
-        </View>
+        </ScreenWrapper>
     );
 };
 

@@ -9,6 +9,7 @@ import HistoryScreen from '../screens/History/HistoryScreen';
 import SafeHavensScreen from '../screens/SafeHavens/SafeHavensScreen';
 import RoutePlanningScreen from '../screens/Routes/RoutePlanningScreen';
 import ReportScreen from '../screens/Community/ReportScreen';
+import CommunityScreen from '../screens/Community/CommunityScreen';
 import SpotifyScreen from '../screens/Spotify/SpotifyScreen';
 import PanicScreen from '../screens/Panic/PanicScreen';
 
@@ -73,6 +74,13 @@ const DrawerNavigator = () => {
                 component={ReportScreen}
                 options={{
                     drawerIcon: ({ color }) => <Ionicons name="camera-outline" size={22} color={color} />
+                }}
+            />
+            <Drawer.Screen
+                name="Community"
+                component={CommunityScreen}
+                options={{
+                    drawerIcon: ({ color }) => <Ionicons name="people-outline" size={22} color={color} />
                 }}
             />
             <Drawer.Screen
