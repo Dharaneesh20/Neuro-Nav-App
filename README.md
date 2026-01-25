@@ -2,7 +2,10 @@
 
 <div align="center">
 
+<img src="assets/logo.png" alt="Neuro-Nav Logo" width="150" height="150" />
+
 [![Download APK](https://img.shields.io/badge/Download-Android%20APK%20v2.0.0-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/Dharaneesh20/Neuro-Nav-App/releases/download/v2.0.0/neuro-nav-v2.apk)
+
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Dharaneesh20/Neuro-Nav-App)
 [![License](https://img.shields.io/badge/License-ISC-blue?style=flat-square)](LICENSE)
 [![React Native](https://img.shields.io/badge/Built%20with-React%20Native-61DAFB?style=flat-square&logo=react)](https://reactnative.dev/)
@@ -119,6 +122,11 @@ Neuro-Nav v2.0 is a sensory-friendly navigation app designed for individuals wit
 - **Runtime API Key Injection** - Users can bring their own Google Maps API Key.
 - **Instant Switch** - Toggle between Leaflet and Google Maps instantly from the Dashboard.
 - **No Rebuild Required** - Changes apply immediately without needing a new APK.
+
+#### ☁️ Modern Cloud Build System
+- **Powered by EAS** - Reliable, cloud-based Android builds
+- **Automatic Updates** - Streamlined delivery pipeline
+- **Secure** - Environment setup with masked secrets
 
 #### 📊 Advanced Trip History
 - Local storage of all past journeys
