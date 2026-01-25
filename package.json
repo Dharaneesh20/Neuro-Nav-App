@@ -1,6 +1,6 @@
 {
   "name": "neuro-nav-rn",
-  "version": "1.0.0",
+  "version": "4.0.0",
   "main": "index.js",
   "scripts": {
     "start": "node -r ./polyfill.js node_modules/expo/bin/cli start",

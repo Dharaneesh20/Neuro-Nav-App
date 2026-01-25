@@ -1,10 +1,10 @@
-# 📱 Neuro-Nav Android App v2.0
+# 📱 Neuro-Nav Android App v4.0
 
 <div align="center">
 
 <img src="assets/logo.png" alt="Neuro-Nav Logo" width="150" height="150" />
 
-[![Download APK](https://img.shields.io/badge/Download-Android%20APK%20v2.0.0-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/Dharaneesh20/Neuro-Nav-App/releases/download/v2.0.0/neuro-nav-v2.apk)
+[![Download APK](https://img.shields.io/badge/Download-Android%20APK%20v4.0.0-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/Dharaneesh20/Neuro-Nav-App/releases/download/v4.0.0/neuro-nav-v4.apk)
 
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Dharaneesh20/Neuro-Nav-App)
 [![License](https://img.shields.io/badge/License-ISC-blue?style=flat-square)](LICENSE)
@@ -88,7 +88,7 @@ Neuro-Nav v2.0 is a sensory-friendly navigation app designed for individuals wit
 
 ---
 
-## 🚀 What's New in v2.0
+## 🚀 What's New in v4.0
 
 ### ✨ Major Features
 
@@ -166,11 +166,11 @@ Neuro-Nav v2.0 is a sensory-friendly navigation app designed for individuals wit
 
 ## 📥 Quick Download
 
-**[⬇️ Download Neuro-Nav v2.0.0 APK](https://github.com/Dharaneesh20/Neuro-Nav-App/releases/download/v2.0.0/neuro-nav-v2.apk)**
+**[⬇️ Download Neuro-Nav v4.0.0 APK](https://github.com/Dharaneesh20/Neuro-Nav-App/releases/download/v4.0.0/neuro-nav-v4.apk)**
 
 - **File Size:** ~50MB
 - **Android Version:** 8.0+
-- **Latest Release:** January 2026
+- **Latest Release:** January 2026 (v4.0.0)
 
 ---
 
@@ -205,7 +205,7 @@ Neuro-Nav v2.0 is a sensory-friendly navigation app designed for individuals wit
 ### Option 1: Install APK (Recommended)
 
 #### Step 1: Download
-Click here: **[Neuro-Nav v2.0.0 APK](https://github.com/Dharaneesh20/Neuro-Nav-App/releases/download/v2.0.0/neuro-nav-v2.apk)**
+Click here: **[Neuro-Nav v4.0.0 APK](https://github.com/Dharaneesh20/Neuro-Nav-App/releases/download/v4.0.0/neuro-nav-v4.apk)**
 
 #### Step 2: Enable Unknown Sources
 1. Open **Settings** → **Apps & notifications**
@@ -438,7 +438,7 @@ Neuro-Nav is committed to creating a more accessible, inclusive urban experience
 
 **Download Neuro-Nav and navigate with confidence!**
 
-[![Download APK](https://img.shields.io/badge/DOWNLOAD-Android%20APK%20v2.0.0-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/Dharaneesh20/Neuro-Nav-App/releases/download/v2.0.0/neuro-nav-v2.apk)
+[![Download APK](https://img.shields.io/badge/DOWNLOAD-Android%20APK%20v4.0.0-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/Dharaneesh20/Neuro-Nav-App/releases/download/v4.0.0/neuro-nav-v4.apk)
 
 **Available on Android 8.0+**
 
@@ -446,7 +446,7 @@ Neuro-Nav is committed to creating a more accessible, inclusive urban experience
 
 **Help us make cities calmer!** Give us a ⭐ on [GitHub](https://github.com/Dharaneesh20/Neuro-Nav-App)
 
-[📱 Download APK](https://github.com/Dharaneesh20/Neuro-Nav-App/releases/download/v2.0.0/neuro-nav-v2.apk) • [🎥 Watch Demo](https://www.youtube.com/watch?v=6HGkjHiR2Ds) • [💻 GitHub](https://github.com/Dharaneesh20/Neuro-Nav-App)
+[📱 Download APK](https://github.com/Dharaneesh20/Neuro-Nav-App/releases/download/v4.0.0/neuro-nav-v4.apk) • [🎥 Watch Demo](https://www.youtube.com/watch?v=6HGkjHiR2Ds) • [💻 GitHub](https://github.com/Dharaneesh20/Neuro-Nav-App)
 
 **Made with ❤️ for a calmer world**
 
@@ -456,4 +456,4 @@ Neuro-Nav is committed to creating a more accessible, inclusive urban experience
 
 ---
 
-**Last Updated:** January 25, 2026 | Version 2.0.0 | Android 8.0+
+**Last Updated:** January 25, 2026 | Version 4.0.0 | Android 8.0+
