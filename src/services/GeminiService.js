@@ -1,7 +1,10 @@
 import axios from 'axios';
+import Constants from 'expo-constants';
 
-const API_KEY = 'AIzaSyCqA1sTXwnNAlKp8OrM3XdCBUmqT4gGB4o';
-const BASE_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
+const API_KEY = Constants.expoConfig?.extra?.geminiApiKey || 'YOUR_GEMINI_API_KEY_HERE';
+const BASE_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
+
+console.log("GeminiService: Using URL:", BASE_URL); // Debug url
 
 export const GeminiService = {
     /**
@@ -37,6 +40,9 @@ User Input: ${userQuery}
             }
         } catch (error) {
             console.error("Gemini API Error:", error);
+            if (error.response) {
+                console.error("Gemini Error Details:", JSON.stringify(error.response.data, null, 2));
+            }
             return "An error occurred while communicating with the AI. Please try again.";
         }
     }
