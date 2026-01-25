@@ -30,60 +30,22 @@ Neuro-Nav v2.0 is a sensory-friendly navigation app designed for individuals wit
 
 ---
 
-## 🎥 Project Demo
 
-*Watch our TechSprint Hackathon demonstration to see Neuro-Nav in action.*
-
-<div align="center">
-  <a href="https://www.youtube.com/watch?v=6HGkjHiR2Ds">
-    <img src="https://img.youtube.com/vi/6HGkjHiR2Ds/maxresdefault.jpg" alt="Watch the Demo" width="600" style="border-radius: 10px;" />
-  </a>
-</div>
-
----
 
 ## 📸 App Screenshots
 
-### 🏠 Dashboard
-*Your central hub for safe navigation and quick actions.*
-
 <div align="center">
-<img src="https://i.ibb.co/MyZdrMX2/Screenshot-20260105-123143-neuro-nav-rn.png" width="280" />
-</div>
 
-### 🤖 Gemini AI Assistant
-*Chat with our integrated AI to find safe havens, get route advice, or discover quiet spots.*
+| **Dashboard** | **Gemini AI** | **Route Planning** |
+|:---:|:---:|:---:|
+| <img src="https://i.ibb.co/MyZdrMX2/Screenshot-20260105-123143-neuro-nav-rn.png" width="240" /> | <img src="https://i.ibb.co/7NLqk7Hm/Screenshot-20260105-123136-neuro-nav-rn.png" width="240" /> | <img src="https://i.ibb.co/Mx7qdL59/Screenshot-20260105-123331-neuro-nav-rn.png" width="240" /> |
+| **Central Hub** | **Smart Assistant** | **Quiet Routes** |
 
-<div align="center">
-<img src="https://i.ibb.co/7NLqk7Hm/Screenshot-20260105-123136-neuro-nav-rn.png" width="280" />
-</div>
+| **Panic Mode** | **Community** | **Trip History** |
+|:---:|:---:|:---:|
+| <img src="https://i.ibb.co/7J6fY1KP/Screenshot-20260105-123151-neuro-nav-rn.png" width="240" /> | <img src="https://i.ibb.co/dwZ7c2Ws/Screenshot-20260105-123210-neuro-nav-rn.png" width="240" /> | <img src="https://i.ibb.co/KxdFCHxS/Screenshot-20260105-123506-neuro-nav-rn.png" width="240" /> |
+| **Quick Safety** | **Hazards & Reports** | **Journey Logs** |
 
-### 🗺️ Route Planning
-*Plan trips that prioritize quiet streets and avoid crowded areas.*
-
-<div align="center">
-<img src="https://i.ibb.co/Mx7qdL59/Screenshot-20260105-123331-neuro-nav-rn.png" width="280" />
-</div>
-
-### 🆘 Panic Mode
-*One-tap access to calming tools and immediate safety navigation.*
-
-<div align="center">
-<img src="https://i.ibb.co/7J6fY1KP/Screenshot-20260105-123151-neuro-nav-rn.png" width="260" /> <img src="https://i.ibb.co/yFqbHLZX/Screenshot-20260105-123158-neuro-nav-rn.png" width="260" />
-</div>
-
-### 📢 Community Features
-*Report sensory hazards and access calming tools.*
-
-<div align="center">
-<img src="https://i.ibb.co/dwZ7c2Ws/Screenshot-20260105-123210-neuro-nav-rn.png" width="260" /> <img src="https://i.ibb.co/RpcsxzYZ/Screenshot-20260105-123344-neuro-nav-rn.png" width="260" />
-</div>
-
-### 📊 Trip History
-*Track your safe journeys and review past routes.*
-
-<div align="center">
-<img src="https://i.ibb.co/KxdFCHxS/Screenshot-20260105-123506-neuro-nav-rn.png" width="280" />
 </div>
 
 ---
