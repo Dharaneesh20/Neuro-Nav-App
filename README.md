@@ -448,4 +448,4 @@ Neuro-Nav is committed to creating a more accessible, inclusive urban experience
 
 ---
 
-**Last Updated:** January 5, 2026 | Version 2.0.0 | Android 8.0+
+**Last Updated:** January 25, 2026 | Version 2.0.0 | Android 8.0+
