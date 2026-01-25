@@ -18,15 +18,9 @@
 
 ## 🎯 About Neuro-Nav
 
-Neuro-Nav v2.0 is a sensory-friendly navigation app designed for individuals with:
-- **Autism Spectrum Disorder (ASD)** with sensory sensitivities
-- **Anxiety disorders** triggered by crowds and noise
-- **ADHD** requiring calm navigation routes
-- **Sensory processing disorders**
-- Anyone seeking a **calmer urban experience**
+Neuro-Nav v4.0 is a sensory-friendly navigation app for individuals with ASD, ADHD, anxiety, or sensory sensitivities.
 
-### Core Philosophy
-**We believe everyone deserves to navigate their world with confidence and comfort.** By prioritizing sensory wellness in navigation, Neuro-Nav makes cities more accessible for neurodivergent individuals.
+**Core Philosophy:** We believe everyone deserves to navigate their world with confidence. We prioritize sensory wellness to make cities more accessible.
 
 ---
 
@@ -52,49 +46,15 @@ Neuro-Nav v2.0 is a sensory-friendly navigation app designed for individuals wit
 
 ## 🚀 What's New in v4.0
 
-### ✨ Major Features
+### v4.0.0 (Latest)
+- **🤖 Gemini AI Assistant**: Powered by Gemini 2.5 Flash for instant, context-aware responses.
+- **🔄 Dynamic Map Switching**: Toggle between OpenStreetMap and Google Maps instantly.
+- **🆘 Enhanced Panic Mode**: Visual breathing guides and one-tap Safe Haven navigation.
+- **☁️ Cloud Build System**: Reliable, secure Android builds via EAS.
+- **🎵 Spotify Integration**: Curated calming playlists and music control.
 
-#### 🤖 Gemini AI Assistant (NEW)
-- **Powered by Gemini 2.5 Flash** for instant, intelligent responses
-- Natural language queries: "Find me a quiet coffee shop nearby"
-- Route recommendations based on your sensory profile
-- Real-time assistance during navigation
-- Context-aware suggestions for safe havens
-
-#### 🆘 Enhanced Panic Mode
-- **Visual Breathing Guide** - Animated exercises to help de-escalate stress
-- **Automatic Safe Haven Detection** - Instantly finds nearest quiet location
-- **One-Tap Navigation** - Quick route to safety
-- **Calming Tools Integration** - Access relaxation features immediately
-
-#### 🎵 Spotify Integration
-- Curated calming playlists
-- Music recommendations based on stress levels
-- Seamless playback controls within app
-- Personalized relaxation soundscapes
-
-#### 📢 Improved Community Reporting
-- Report sensory hazards (construction, crowds, flashing lights)
-- Real-time community warnings on map
-- Detailed hazard descriptions with severity ratings
-- Photo uploads for visual context
-
-#### 🔄 Dynamic Map Switching (NEW)
-- **Zero Cost by Default** - Uses OpenStreetMap & Leaflet out of the box.
-- **Runtime API Key Injection** - Users can bring their own Google Maps API Key.
-- **Instant Switch** - Toggle between Leaflet and Google Maps instantly from the Dashboard.
-- **No Rebuild Required** - Changes apply immediately without needing a new APK.
-
-#### ☁️ Modern Cloud Build System
-- **Powered by EAS** - Reliable, cloud-based Android builds
-- **Automatic Updates** - Streamlined delivery pipeline
-- **Secure** - Environment setup with masked secrets
-
-#### 📊 Advanced Trip History
-- Local storage of all past journeys
-- Route analytics and pattern recognition
-- Favorite routes for quick re-booking
-- Sensory feedback tracking per trip
+### v3.0.0 Beta
+> ⚠️ **Discontinued**: This version had critical stability issues and has been retracted. Please use v4.0.0.
 
 ---
 
@@ -267,40 +227,7 @@ To enable AI assistant features:
 
 ---
 
-## 📊 File Structure
 
-```
-Neuro-Nav-App/
-├── src/
-│   ├── screens/
-│   │   ├── HomeScreen.js
-│   │   ├── DashboardScreen.js
-│   │   ├── RoutePlanningScreen.js
-│   │   ├── SafeHavensScreen.js
-│   │   ├── PanicScreen.js
-│   │   ├── AIAssistantScreen.js      # NEW - Gemini chat
-│   │   ├── CalmingToolsScreen.js      # NEW - Spotify & relaxation
-│   │   └── HistoryScreen.js
-│   │
-│   ├── components/
-│   │   ├── LeafletMap.js
-│   │   ├── BreathingGuide.js          # NEW - Panic mode animation
-│   │   ├── GeminiChat.js              # NEW - AI integration
-│   │   ├── SpotifyPlayer.js           # NEW - Music player
-│   │   └── CommunityReport.js         # NEW - Enhanced reporting
-│   │
-│   ├── services/
-│   │   ├── GeminiService.js           # NEW - AI API
-│   │   ├── OSRMService.js
-│   │   ├── FirebaseService.js
-│   │   └── SpotifyService.js          # NEW - Music API
-│   │
-│   └── App.js
-│
-├── app.json
-├── package.json
-└── README.md
-```
 
 ---
 
