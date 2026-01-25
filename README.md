@@ -325,21 +325,21 @@ Contributions are welcome! Here's how:
 
 ## 📋 Roadmap
 
-### Current Status (v2.0.0) ✅
+### Current Status (v4.0.0) ✅
 - [x] Gemini AI assistant integration
-- [x] Enhanced panic mode with breathing exercises
+- [x] Enhanced panic mode with visual breathing
 - [x] Spotify music integration
-- [x] Improved community reporting
+- [x] Cloud Build System (EAS)
 - [x] Advanced trip history
 
-### Planned (v2.1.0) 🚀
+### Planned (v4.1.0) 🚀
 - [ ] Real-time noise level API integration
 - [ ] Offline map downloading
 - [ ] Push notifications for hazard alerts
 - [ ] Multi-language support
 - [ ] Wearable device integration
 
-### Future Vision (v3.0.0) 📅
+### Future Vision (v5.0.0) 📅
 - [ ] AR navigation overlays
 - [ ] Machine learning route personalization
 - [ ] Social features (friend tracking, group navigation)
@@ -358,16 +358,7 @@ Contributions are welcome! Here's how:
 
 ## 📄 License
 
-This project is licensed under the **ISC License**.
-
-```
-ISC License
-Copyright (c) 2026 Dharaneesh
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted, provided that the above
-copyright notice and this permission notice appear in all copies.
-```
+This project is licensed under the **ISC License**. See [LICENSE](LICENSE) for details.
 
 ---
 
@@ -397,22 +388,18 @@ Neuro-Nav is committed to creating a more accessible, inclusive urban experience
 ---
 
 ### 🎯 Get Started Today
-
 **Download Neuro-Nav and navigate with confidence!**
 
-[![Download APK](https://img.shields.io/badge/DOWNLOAD-Android%20APK%20v4.0.0-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/Dharaneesh20/Neuro-Nav-App/releases/download/v4.0.0/neuro-nav-v4.apk)
-
-**Available on Android 8.0+**
+Available on Android 8.0+
 
 ---
 
 **Help us make cities calmer!** Give us a ⭐ on [GitHub](https://github.com/Dharaneesh20/Neuro-Nav-App)
 
-[📱 Download APK](https://github.com/Dharaneesh20/Neuro-Nav-App/releases/download/v4.0.0/neuro-nav-v4.apk) • [🎥 Watch Demo](https://www.youtube.com/watch?v=6HGkjHiR2Ds) • [💻 GitHub](https://github.com/Dharaneesh20/Neuro-Nav-App)
-
-**Made with ❤️ for a calmer world**
+Made with ❤️ for a calmer world
 
 [![GitHub](https://img.shields.io/badge/GitHub-Dharaneesh20-181717?style=flat-square&logo=github)](https://github.com/Dharaneesh20)
+
 
 </div>
 
